@@ -7,8 +7,8 @@ name = 'pycflow2dot'
 description = (
     'Create C call graphs from multiple source files '
     'using Cflow, producing linked PDF.')
-long_description = open('README.md').read()
-url = 'https://github.com/johnyf/{name}'.format(name=name)
+long_description = """open('README.md').read()"""
+url = 'https://github.com/alfredt15/{name}'.format(name=name)
 VERSION_FILE = '{name}/_version.py'.format(name=name)
 MAJOR = 0
 MINOR = 2
@@ -85,8 +85,8 @@ def run_setup():
         description=description,
         long_description=long_description,
         long_description_content_type='text/markdown',
-        author='Ioannis Filippidis',
-        author_email='jfilippidis@gmail.com',
+        author='Alfred Timperley',
+        author_email='atimperley15@gmail.com',
         url=url,
         license='GPLv3',
         install_requires=install_requires,
