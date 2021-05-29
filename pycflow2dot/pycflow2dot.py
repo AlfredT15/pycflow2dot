@@ -32,7 +32,7 @@ try:
 except:
     pydot = None
 
-from pycflow2dot import __version__ as _VERSION
+#from pycflow2dot import __version__ as _VERSION
 
 
 _COLORS = ['#eecc80', '#ccee80', '#80ccee', '#eecc80', '#80eecc']
@@ -62,6 +62,9 @@ def call_cflow(
         cflow_cmd.append('--reverse')
     cflow_cmd.append(c_fname)
     logger.debug('cflow command:\n\t' + str(cflow_cmd))
+    # print (os.getcwd())
+    # os.chdir("/mnt/c/users/alfre/research/pycflow2dot-master")
+    # print (os.getcwd())
     cflow_data = subprocess.check_output(cflow_cmd)
     cflow_data = bytes2str(cflow_data)
     logger.debug('cflow returned:\n\n' + cflow_data)
@@ -183,6 +186,7 @@ def _graph_node_defaults():
 def choose_node_format(node, nest_level, src_line, defined_somewhere,
                        for_latex, multi_page):
     shapes = ['box', 'ellipse', 'octagon', 'hexagon', 'diamond']
+    embedding = "example embedding"
     sl = '\\\\'  # after fprintf \\ and after dot \, a single slash !
     # color, shape ?
     if nest_level == 0:
@@ -202,8 +206,8 @@ def choose_node_format(node, nest_level, src_line, defined_somewhere,
             label = '{label}\\n{src_line}'.format(
                 label=label, src_line=src_line)
         else:
-            label = '{label}\\n{src_line}'.format(
-                label=label, src_line=src_line)
+            label = '{label}\\n{src_line}\\n{embedding}'.format(
+                label=label, src_line=src_line, embedding=embedding)
     # multi-page pdf ?
     if multi_page:
         if src_line != -1:
@@ -606,7 +610,7 @@ def parse_args():
     parser.add_argument(
         '--version', action='version',
         version='cflow2dot version {version}'.format(
-            version=_VERSION))
+            version="_VERSION"))
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
