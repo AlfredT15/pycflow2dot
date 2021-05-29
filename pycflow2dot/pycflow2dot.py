@@ -32,7 +32,7 @@ try:
 except:
     pydot = None
 
-#from pycflow2dot import __version__ as _VERSION
+from pycflow2dot import __version__ as _VERSION
 
 
 _COLORS = ['#eecc80', '#ccee80', '#80ccee', '#eecc80', '#80eecc']
